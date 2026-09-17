@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    dotnet（.NET Core 版 MSBuild）不支持 Esri 打包 targets 里的 CodeTaskFactory 内联任务，
+    会让构建报 MSB4801/MSB4036。这里把三个打包/安装目标覆盖成空实现，
+    打包与注册改由 build_addin.sh + package_addin.py 显式完成（更可控）。
+  -->
+  <Target Name="ArcGISInstallOutput" />
+  <Target Name="PackageArcGISContents" />
+  <Target Name="CleanArcGISContents" />
+</Project>

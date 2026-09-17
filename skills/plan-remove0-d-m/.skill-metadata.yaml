@@ -1,0 +1,18 @@
+examples:
+  - id: run-plan-remove0-d-m
+    title:
+      zh: 执行「移除用地代码后的0」
+      en: Run "移除用地代码后的0"
+    description:
+      zh: 在指定图层上按确认参数执行该功能
+      en: Execute this feature on a target layer with confirmed parameters
+    prompt:
+      zh: |-
+        请执行功能「移除用地代码后的0」：
+        目标图层：{图层名}
+        关键参数：{按本技能“使用前必须先问询”清单逐项向我确认}
+        完成后把结果和复核情况汇报给我。
+      en: |-
+        Run  GIS feature "移除用地代码后的0":
+        target layer: {layer}
+        ask me to confirm each parameter from the skill's question checklist first.

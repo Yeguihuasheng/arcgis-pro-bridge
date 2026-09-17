@@ -1,0 +1,18 @@
+examples:
+  - id: run-plan-statistics-y-d-y-h
+    title:
+      zh: 执行「用地用海指标汇总」
+      en: Run "用地用海指标汇总"
+    description:
+      zh: 在指定图层上按确认参数执行该功能
+      en: Execute this feature on a target layer with confirmed parameters
+    prompt:
+      zh: |-
+        请执行功能「用地用海指标汇总」：
+        目标图层：{图层名}
+        关键参数：{按本技能“使用前必须先问询”清单逐项向我确认}
+        完成后把结果和复核情况汇报给我。
+      en: |-
+        Run  GIS feature "用地用海指标汇总":
+        target layer: {layer}
+        ask me to confirm each parameter from the skill's question checklist first.

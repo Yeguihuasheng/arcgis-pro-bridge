@@ -1,0 +1,21 @@
+# 构建产物
+bin/
+obj/
+*.esriAddinX
+*.esriaddin
+
+# .NET / IDE
+.vs/
+*.user
+*.suo
+
+# Python
+__pycache__/
+*.pyc
+file_bridge/
+
+# 编辑器
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
