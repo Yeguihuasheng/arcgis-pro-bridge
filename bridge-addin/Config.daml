@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArcGIS defaultAssembly="YghsBridge.dll"
+        defaultNamespace="YghsBridge"
+        xmlns="http://schemas.esri.com/DADF/Registry"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--
+    ⚠️ defaultAssembly 必须带 .dll 扩展名（对照已验证可用的 Pro 3.4 插件项目）。
+    ⚠️ AddInInfo 是严格 xs:sequence：只允许 Name/Description/Image/Author/Company/Date/Subject，
+       属性只允许 id/version/desktopVersion。多写 <Targets> 会让 DAML 校验失败 → Pro 静默拒载。
+  -->
+  <AddInInfo id="{A7C4E1F2-3B5D-4E6A-9C81-2D4F6B8A0C13}" version="1.0.0" desktopVersion="3.4">
+    <Name>YGHSBridge</Name>
+    <Description>外部进程通过本机 socket 在 ArcGIS Pro 内执行 GP 工具 / Python 脚本（QueuedTask 上下文），并在 Pro 内的停靠面板实时显示执行日志。</Description>
+    <Image>Images\FeedbackIcon32.png</Image>
+    <Author>YGHS</Author>
+    <Company>YGHS</Company>
+    <Date>2026-09-17</Date>
+  </AddInInfo>
+  <modules>
+    <insertModule id="YghsBridge_Module" className="BridgeModule" autoLoad="true" caption="YghsBridge">
+      <!--
+        结构与官方示例（Esri/arcgis-pro-sdk-community-samples → Framework/DockpaneSimple）一致：
+        - dockPanes 必须放在 insertModule 内部（xsd：CT_Module → dockPanes）
+        - dockPane.className = view-model（继承 Contracts.DockPane）；<content className> = 视图（FrameworkElement）
+        - dockPane 的属性仅限 dockPaneGroup 里列出的那些（dock 只能 top/left/right/bottom/float/group）
+          ⚠️ 官方新模板里有 initiallyVisible，但 Pro 3.4 的 xsd 里**没有**这个属性，写了会校验失败 → 静默拒载
+        - CT_Command / CT_Group 都要求 keytip 属性（漏了同样静默失败）
+      -->
+      <!--
+        自建标签页：Pro 自带那个「加载项/Add-In」标签页的名字由 Pro 自身决定（本地化资源），
+        插件改不了；所以这里声明自己的 tab，标签页名就叫 YghsBridge，
+        并让 group 不再挂到 Add-In 页（appearsOnAddInTab="false"）——Add-In 页没有内容时 Pro 会隐藏它。
+      -->
+      <tabs>
+        <tab id="YghsBridge_Tab" caption="YghsBridge" keytip="YB">
+          <group refID="YghsBridge_Group" />
+        </tab>
+      </tabs>
+      <groups>
+        <group id="YghsBridge_Group" caption="YghsBridge" keytip="YB" appearsOnAddInTab="false">
+          <button refID="YghsBridge_McpToggle" size="large" />
+          <button refID="YghsBridge_ShowLogButton" size="large" />
+          <button refID="YghsBridge_LinkGithub" size="large" />
+          <button refID="YghsBridge_PortLabel" size="large" />
+        </group>
+      </groups>
+      <controls>
+        <button id="YghsBridge_McpToggle" caption="MCP 服务" keytip="YM"
+                className="McpToggle" loadOnClick="true"
+                smallImage="Images\McpOn16.png" largeImage="Images\McpOn32.png">
+          <tooltip heading="MCP 服务开关">开：彩色图标，外部 AI 可连接本插件；关：灰色图标，连接断开。点击切换。</tooltip>
+        </button>
+        <button id="YghsBridge_ShowLogButton" caption="消息面板" keytip="YL"
+                className="ShowLogButton" loadOnClick="true"
+                smallImage="Images\FeedbackIcon16.png" largeImage="Images\FeedbackIcon32.png" />
+        <button id="YghsBridge_LinkGithub" caption="问题反馈" keytip="GH"
+                className="LinkGithubButton" loadOnClick="true"
+                smallImage="Images\FeedbackIcon16.png" largeImage="Images\FeedbackIcon32.png">
+          <tooltip heading="问题反馈">打开 GitHub 仓库：提问题、看源码、下载最新版本。</tooltip>
+        </button>
+        <labelControl id="YghsBridge_PortLabel" caption="端口 18750" />
+      </controls>
+      <dockPanes>
+        <dockPane id="YghsBridge_LogPane" caption="YghsBridge" className="BridgeLogPane"
+                  dock="bottom" autoHide="false" width="640" height="220">
+          <content className="BridgeLogPaneView" />
+        </dockPane>
+      </dockPanes>
+    </insertModule>
+  </modules>
+</ArcGIS>

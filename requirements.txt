@@ -1,0 +1,4 @@
+# YGHS Bridge —— Python 驱动脚本依赖
+# 客户端与 MCP 适配器只依赖 Python 标准库（socket/json/os 等），零第三方依赖。
+# arcpy 只在 ArcGIS Pro 进程内由插件调用，驱动环境无需安装 arcpy。
+# 如后续引入依赖，在此登记并同步 README 的 Python 环境说明。
