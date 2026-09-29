@@ -9,9 +9,11 @@
   2. input_dataset_field（input_dataset_field）
   3. input_join（input_join）
   4. input_join_field（input_join_field）
+  5. value_table（value_table）
+  6. sort_values（sort_values）
 
 用法：
-    python run.py <input_dataset> <input_dataset_field> <input_join> <input_join_field>
+    python run.py <input_dataset> <input_dataset_field> <input_join> <input_join_field> <value_table> <sort_values>
 """
 
 import os
@@ -21,10 +23,33 @@ import arcpy
 
 
 def _argv(i):
-    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数。"""
+    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数（字符串）。"""
     if len(sys.argv) > i + 1:
         return sys.argv[i + 1]
     return u""
+
+
+def _gp(i):
+    """替代 arcpy.GetParameter(i)：按常见类型还原命令行参数（数值/布尔/字符串）。"""
+    if len(sys.argv) <= i + 1:
+        return None
+    v = sys.argv[i + 1]
+    if v == u"":
+        return None
+    low = v.lower()
+    if low == u"true":
+        return True
+    if low == u"false":
+        return False
+    try:
+        return int(v)
+    except ValueError:
+        pass
+    try:
+        return float(v)
+    except ValueError:
+        pass
+    return v
 
 
 """
@@ -61,7 +86,7 @@ def trace():
 def dissolve_fields():
     """ dissolve fields """
     try:
-        value_table = arcpy.GetParameter(4)
+        value_table = _gp(4)
         flds_seps = []
         for i in range(0, value_table.rowCount):
             f = value_table.getValue(i, 0)
@@ -74,7 +99,7 @@ def dissolve_fields():
         input_dataset_field = _argv(1)
         input_join = _argv(2)
         input_join_field = _argv(3)
-        sort_values = arcpy.GetParameter(5)
+        sort_values = _gp(5)
 
         fieldtype = [f.type for f in arcpy.ListFields(input_dataset, input_dataset_field)][0]
         delimiter_value = '\'' if fieldtype == 'String' else ''

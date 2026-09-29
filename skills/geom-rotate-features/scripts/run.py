@@ -8,12 +8,15 @@
   1. fc（fc）
   2. out_fc_gdb（out_fc_gdb）
   3. out_fc_name（out_fc_name）
-  4. rotation_method（rotation_method）
-  5. feature_layer（feature_layer）
-  6. point_feature_layer（point_feature_layer）
+  4. rotation_angle（rotation_angle）
+  5. rotation_method（rotation_method）
+  6. feature_layer（feature_layer）
+  7. point_feature_layer（point_feature_layer）
+  8. rotation_x（rotation_x）
+  9. rotation_y（rotation_y）
 
 用法：
-    python run.py <fc> <out_fc_gdb> <out_fc_name> <rotation_method> <feature_layer> <point_feature_layer>
+    python run.py <fc> <out_fc_gdb> <out_fc_name> <rotation_angle> <rotation_method> <feature_layer> <point_feature_layer> <rotation_x> <rotation_y>
 """
 
 import os
@@ -25,10 +28,33 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 def _argv(i):
-    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数。"""
+    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数（字符串）。"""
     if len(sys.argv) > i + 1:
         return sys.argv[i + 1]
     return u""
+
+
+def _gp(i):
+    """替代 arcpy.GetParameter(i)：按常见类型还原命令行参数（数值/布尔/字符串）。"""
+    if len(sys.argv) <= i + 1:
+        return None
+    v = sys.argv[i + 1]
+    if v == u"":
+        return None
+    low = v.lower()
+    if low == u"true":
+        return True
+    if low == u"false":
+        return False
+    try:
+        return int(v)
+    except ValueError:
+        pass
+    try:
+        return float(v)
+    except ValueError:
+        pass
+    return v
 
 
 # SCRIPT --------------------------------------------------------------------------------------------------------------
@@ -76,14 +102,14 @@ from arcgis_pro_geometry._toolbox import add_to_active_map, output_path, remove_
 fc = _argv(0)
 out_fc_gdb = _argv(1)
 out_fc_name = _argv(2)
-rotation_angle = arcpy.GetParameter(3)
+rotation_angle = _gp(3)
 rotation_method = _argv(4)
 # Hint: rotation_method in
 # ['coordinates', 'extent middle point', 'point feature', 'in_feature_centroid', 'in_feature_true_centroid']
 feature_layer = _argv(5)
 point_feature_layer = _argv(6)
-rotation_x = arcpy.GetParameter(7)
-rotation_y = arcpy.GetParameter(8)
+rotation_x = _gp(7)
+rotation_y = _gp(8)
 
 #: Rotation methods that rotate every feature around its own centroid
 CENTROID_METHODS = ('in_feature_centroid', 'in_feature_true_centroid')

@@ -8,9 +8,11 @@
   1. fc（fc）
   2. out_fc_gdb（out_fc_gdb）
   3. out_fc_name（out_fc_name）
+  4. distance（distance）
+  5. include_endpoint（include_endpoint）
 
 用法：
-    python run.py <fc> <out_fc_gdb> <out_fc_name>
+    python run.py <fc> <out_fc_gdb> <out_fc_name> <distance> <include_endpoint>
 """
 
 import os
@@ -22,10 +24,33 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 def _argv(i):
-    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数。"""
+    """替代 arcpy.GetParameterAsText(i)：从命令行取第 i 个参数（字符串）。"""
     if len(sys.argv) > i + 1:
         return sys.argv[i + 1]
     return u""
+
+
+def _gp(i):
+    """替代 arcpy.GetParameter(i)：按常见类型还原命令行参数（数值/布尔/字符串）。"""
+    if len(sys.argv) <= i + 1:
+        return None
+    v = sys.argv[i + 1]
+    if v == u"":
+        return None
+    low = v.lower()
+    if low == u"true":
+        return True
+    if low == u"false":
+        return False
+    try:
+        return int(v)
+    except ValueError:
+        pass
+    try:
+        return float(v)
+    except ValueError:
+        pass
+    return v
 
 
 # SCRIPT --------------------------------------------------------------------------------------------------------------
@@ -67,8 +92,8 @@ from arcgis_pro_geometry._toolbox import add_to_active_map, output_path
 fc = _argv(0)
 out_fc_gdb = _argv(1)
 out_fc_name = _argv(2)
-distance = arcpy.GetParameter(3)
-include_endpoint = arcpy.GetParameter(4)
+distance = _gp(3)
+include_endpoint = _gp(4)
 # ---------------------------------------------------------------------------------------------------------------------
 
 

@@ -5,9 +5,9 @@ name_zh: 沿线等距布点
 description: 沿点/线/面要素按固定距离或固定数量生成点，支持按起终点偏移与端点处理，用于里程桩、采样点、路灯点位布置。 Runs inside ArcGIS Pro via the YghsBridge MCP channel. Use when the user asks for 沿线等距布点 or similar operations.
 description_en: 沿点/线/面要素按固定距离或固定数量生成点，支持按起终点偏移与端点处理，用于里程桩、采样点、路灯点位布置。 Runs inside ArcGIS Pro via the YghsBridge MCP channel. Use when the user asks for 沿线等距布点 or similar operations.
 description_zh: 沿点/线/面要素按固定距离或固定数量生成点，支持按起终点偏移与端点处理，用于里程桩、采样点、路灯点位布置。 经 YghsBridge MCP 在 ArcGIS Pro 内执行；用户提到「沿线等距布点」或同类操作时使用。
-argument-hint: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称>
-argument-hint-en: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称>
-argument-hint-zh: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称>
+argument-hint: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称> <布点间距（要素的线性单位）> <是否在端点布点（true / false）>
+argument-hint-en: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称> <布点间距（要素的线性单位）> <是否在端点布点（true / false）>
+argument-hint-zh: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称> <布点间距（要素的线性单位）> <是否在端点布点（true / false）>
 user-invocable: true
 ---
 
@@ -22,6 +22,8 @@ user-invocable: true
 - 输入要素类（已加载图层可直接写图层名）
 - 输出工作空间（GDB）
 - 输出要素类名称
+- 布点间距（要素的线性单位）
+- 是否在端点布点（true / false）
 - 输出位置（GDB 要素类 / 表 / 栅格 / 文件夹路径）
 - 坐标系要求：涉及面积/长度/坡度时必须确认输入为投影坐标系
 
@@ -30,6 +32,8 @@ user-invocable: true
 1. 输入要素类（已加载图层可直接写图层名）（原参数名：fc）
 2. 输出工作空间（GDB）（原参数名：out_fc_gdb）
 3. 输出要素类名称（原参数名：out_fc_name）
+4. 布点间距（要素的线性单位）（原参数名：distance）
+5. 是否在端点布点（true / false）（原参数名：include_endpoint）
 
 ## 执行路径
 直接执行本技能的 `scripts/run.py`（参数按上表顺序传入）。
@@ -44,13 +48,15 @@ user-invocable: true
 
 ## 参数与调用
 ```bat
-python scripts\run.py <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称>
+python scripts\run.py <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出要素类名称> <布点间距（要素的线性单位）> <是否在端点布点（true / false）>
 ```
 参数说明：
 
 1. 输入要素类（已加载图层可直接写图层名）（原参数名：fc）
 2. 输出工作空间（GDB）（原参数名：out_fc_gdb）
 3. 输出要素类名称（原参数名：out_fc_name）
+4. 布点间距（要素的线性单位）（原参数名：distance）
+5. 是否在端点布点（true / false）（原参数名：include_endpoint）
 
 ## 来源
 来自公开开源工具改造，去除原有名称与作者可见信息后重打包；原始出处与许可证见仓库根目录 `ATTRIBUTION.md`。

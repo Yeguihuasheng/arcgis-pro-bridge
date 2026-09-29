@@ -5,9 +5,9 @@ name_zh: 最大内切圆
 description: 为面要素求最大内切圆（多边形内能容纳的最大圆），输出圆心点与圆面，常用于选址可参考的最大空地、交叉口半径等测算。 Runs inside ArcGIS Pro via the YghsBridge MCP channel. Use when the user asks for 最大内切圆 or similar operations.
 description_en: 为面要素求最大内切圆（多边形内能容纳的最大圆），输出圆心点与圆面，常用于选址可参考的最大空地、交叉口半径等测算。 Runs inside ArcGIS Pro via the YghsBridge MCP channel. Use when the user asks for 最大内切圆 or similar operations.
 description_zh: 为面要素求最大内切圆（多边形内能容纳的最大圆），输出圆心点与圆面，常用于选址可参考的最大空地、交叉口半径等测算。 经 YghsBridge MCP 在 ArcGIS Pro 内执行；用户提到「最大内切圆」或同类操作时使用。
-argument-hint: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称>
-argument-hint-en: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称>
-argument-hint-zh: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称>
+argument-hint: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称> <内切圆求解精度>
+argument-hint-en: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称> <内切圆求解精度>
+argument-hint-zh: <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称> <内切圆求解精度>
 user-invocable: true
 ---
 
@@ -23,6 +23,7 @@ user-invocable: true
 - 输出工作空间（GDB）
 - 输出的圆要素名称
 - 输出的圆心点要素名称
+- 内切圆求解精度
 - 输出位置（GDB 要素类 / 表 / 栅格 / 文件夹路径）
 - 坐标系要求：涉及面积/长度/坡度时必须确认输入为投影坐标系
 
@@ -32,6 +33,7 @@ user-invocable: true
 2. 输出工作空间（GDB）（原参数名：out_fc_gdb）
 3. 输出的圆要素名称（原参数名：out_fc_circle_name）
 4. 输出的圆心点要素名称（原参数名：out_fc_circle_centroid_name）
+5. 内切圆求解精度（原参数名：accuracy）
 
 ## 执行路径
 直接执行本技能的 `scripts/run.py`（参数按上表顺序传入）。
@@ -44,9 +46,12 @@ user-invocable: true
 ## 详细说明
 本技能抽取自社区开源工具箱的单个工具，逻辑与参数保持原实现，仅把参数入口改为命令行传入。
 
+**精度参数**：第 5 个参数是收敛精度（要素的线性单位），取值要明显小于要素尺寸（如米级要素取 0.5~1）。
+**已知边界**：算法靠「不断向内缓冲收缩」逼近圆心，对**规则矩形/正方形**这类收缩后会退化成线的图形可能求不出结果；遇到报错可先把面转成不规则形状（加点或做圆角）再跑。
+
 ## 参数与调用
 ```bat
-python scripts\run.py <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称>
+python scripts\run.py <输入要素类（已加载图层可直接写图层名）> <输出工作空间（GDB）> <输出的圆要素名称> <输出的圆心点要素名称> <内切圆求解精度>
 ```
 参数说明：
 
@@ -54,6 +59,7 @@ python scripts\run.py <输入要素类（已加载图层可直接写图层名）
 2. 输出工作空间（GDB）（原参数名：out_fc_gdb）
 3. 输出的圆要素名称（原参数名：out_fc_circle_name）
 4. 输出的圆心点要素名称（原参数名：out_fc_circle_centroid_name）
+5. 内切圆求解精度（原参数名：accuracy）
 
 ## 来源
 来自公开开源工具改造，去除原有名称与作者可见信息后重打包；原始出处与许可证见仓库根目录 `ATTRIBUTION.md`。
