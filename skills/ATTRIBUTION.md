@@ -53,6 +53,37 @@
 | `tool-batch-split-by-field` | ArcGIS Pro |  |  |  | MIT / Apache-2.0 / 公有领域 |
 | `tool-coordsys-batch` | ArcGIS Pro |  |  |  | MIT / Apache-2.0 / 公有领域 |
 
+| `hydro-hydrodem` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_02_HydroDEM.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-flowdir-d8` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_03a_ContributingAreaD8.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-watershed-by-point` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_04c_Watersheds.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-stream-network-points` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_04a_StreamNetworkPoints.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-flowline` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_05a_Flowline.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-flowline-points` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_06_FlowlinePoints.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-detrend-dem` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_07_DetrendDEM.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-water-surface-extent` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_08_WaterSurfaceExtent.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-channel-slope` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_09_ChannelSlope.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-centerline` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_10_Centerline.py | (脚本工具) | CC0 1.0（公有领域） |
+| `hydro-xs-points` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_14_XSPoints.py | (脚本工具) | CC0 1.0（公有领域） |
+| `terrain-extract-sinks` | ArcGIS Pro | Wetland-Hydrology-Analyst-Toolbox | Scripts/1-extract-sinks.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `terrain-delineate-flowpaths` | ArcGIS Pro | Wetland-Hydrology-Analyst-Toolbox | Scripts/4-delineate-flowpaths.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `terrain-identify-geodepressions` | ArcGIS Pro | arcgis-geodepressions | IdentifyGeoDepressions.py | (脚本工具) | MIT |
+| `geom-rotate-features` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/rotate.py | (脚本工具) | Apache-2.0 |
+| `geom-inner-circle` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/inner_circle.py | (脚本工具) | Apache-2.0 |
+| `geom-circle-from-three-points` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/circle_from_three_points.py | (脚本工具) | Apache-2.0 |
+| `geom-points-along-feature` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/points_along_feature.py | (脚本工具) | Apache-2.0 |
+| `geom-polyline-to-polygon` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/polyline_to_polygon.py | (脚本工具) | Apache-2.0 |
+| `geom-boundary-lines` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/boundary.py | (脚本工具) | Apache-2.0 |
+| `geom-cut-by-line` | ArcGIS Pro | arcgis-pro-geometry | src/arcgis_pro_geometry/cut.py | (脚本工具) | Apache-2.0 |
+| `tool-features-to-gpx` | ArcGIS Pro | sample-gp-tools | FeaturesToGPX/FeaturesToGPX.py | (脚本工具) | Apache-2.0 |
+| `tool-nearby-group` | ArcGIS Pro | sample-gp-tools | NearByGroup/nearbygroup.py | (脚本工具) | Apache-2.0 |
+| `tool-dataset-extent-to-features` | ArcGIS Pro | sample-gp-tools | DatasetExtentToFeatures/datasetExtentToFeatures.py | (脚本工具) | Apache-2.0 |
+| `tool-blob-to-file` | ArcGIS Pro | arcpy-automation-toolkit | BLOB_Handlers/BLOBtoFile.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `tool-file-to-blob` | ArcGIS Pro | arcpy-automation-toolkit | BLOB_Handlers/FiletoBLOB.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `tool-dissolve-fields` | ArcGIS Pro | DissolveFields | dissolve_fields.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `raster-reflectance` | ArcGIS Pro | reflectance-tools | Reflectance.py | (脚本工具) | Unlicense（公有领域） |
+| `map-create-graticule` | ArcGIS Pro | ArcGIS-Create-Graticule-Tool | CreateGraticule.py | (脚本工具) | MIT |
+| `tool-sun-position` | ArcGIS Pro | solutions-geoprocessing-toolbox | sun_position_analysis/scripts/spa.py | (脚本工具) | Apache-2.0 |
+
 ## 原创与自研说明
 
 下列技能不属于上述开源采集，为本项目自研或既有资产：
