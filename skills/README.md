@@ -3,12 +3,12 @@
 **这是一个用户可自定义的技能目录**：每个子文件夹 = 一个技能（一份 SKILL.md 说明书），
 AI 通过 MCP 在 ArcGIS Pro 内执行。
 
-本仓库自带 **92 个技能**，按来源分两类：
+本仓库自带 **121 个技能**，按来源分两类：
 
 | 类别 | 数量 | 目录结构 | 来源 |
 | --- | --- | --- | --- |
 | **业务技能** | 21 | SKILL.md + `source/`（实现源码）+ 部分 `resources/` | 本项目自有的规划 / 国土业务实现 |
-| **工具技能** | 71 | SKILL.md + `scripts/run.py`（可直接执行）+ `source/`（原始工具留档） | 公开开源 ArcGIS 工具箱整理，见 [ATTRIBUTION.md](ATTRIBUTION.md) |
+| **工具技能** | 100 | SKILL.md + `scripts/run.py`（可直接执行）+ `source/`（原始工具留档） | 公开开源 ArcGIS 工具箱整理，见 [ATTRIBUTION.md](ATTRIBUTION.md) |
 
 两类技能都含**「使用前必须先问询」清单**（AI 执行前逐项与你确认参数）。你也可以把自己常用的
 工具箱、GP 工具序列、arcpy 脚本打包成一个技能放进来，AI 就能像用内置能力一样调用它。
@@ -250,6 +250,40 @@ user-invocable: true
 | `tool-file-to-blob`               | 文件写入 BLOB 字段         | 「把 x:\photos 里的照片按文件名写回 xx 的 BLOB 字段」     | 通过表连接把文件名与要素 ID 关联，再把对应…  |
 | `tool-nearby-group`               | 邻近要素分组编号           | 「按 10 米把相邻的 x:\xx.gdb\xx 图斑分到同一组」          | 按搜索半径找出与目标要素相邻的要素，并把它…  |
 | `tool-sun-position`               | 太阳位置与山体阴影计算     | 「算 2026-06-21 12:00 的太阳位置并生成山体阴影」          | 按日期时间计算太阳方位角与高度角，并可生成…  |
+
+### 四、第 5 批扩展技能（29 项 · 几何要素互转 / 元数据 / 时空与网络 / 地形与影像）
+
+| 技能目录                         | 中文工具名称           | 提示词使用示例                           | 工具说明                                       |
+| -------------------------------- | ---------------------- | ---------------------------------------- | ---------------------------------------------- |
+| `geom-convex-hull`               | 生成凸包               | 「给 x://xx.gdb//xx 点图层按 xx 字段分…  | 按分组字段为点要素生成凸包（可再按指定距离外…  |
+| `geom-inside-buffer`             | 内侧缓冲               | 「给 x://xx.gdb//xx 地块求向内 10 米的…  | 对面要素做向内收缩的缓冲（负缓冲），得到只包…  |
+| `geom-delete-overlap`            | 删除面重叠区域         | 「把 x://xx.gdb//xx 与 x://xx.gdb//yy …  | 把两组面要素相互重叠的部分从第一组里扣掉，输…  |
+| `geom-fill-holes`                | 填补面内空洞           | 「把 x://xx.gdb//xx 图斑中间的空洞填实」  | 把面要素内部的孔洞（内环）填实，输出无孔的面…  |
+| `geom-line-junction-to-point`    | 线交点转点             | 「把 x://xx.gdb//xx 路网的交叉口提取成…  | 求线要素之间的交点（共有点）并生成点要素，可…  |
+| `geom-line-midpoint-to-point`    | 线中点转点             | 「把 x://xx.gdb//xx 每条线的中点生成点」  | 取每条线的中点生成点要素，常用于标注定位点、…  |
+| `geom-line-endpoints-to-point`   | 线起终点转点           | 「提取 x://xx.gdb//xx 每条线的起点和终…  | 取每条线的起点与终点（可分别指定输出哪一端）…  |
+| `geom-line-vertices-to-point`    | 线折点转点             | 「把 x://xx.gdb//xx 的所有折点转成点」   | 把线要素的全部折点（顶点）转成点要素，用于节…  |
+| `geom-polygon-vertices-to-point`  | 面折点转点             | 「把 x://xx.gdb//xx 图斑的所有拐点转成…  | 把面要素的全部折点（顶点）转成点要素，可设置…  |
+| `geom-polygon-centroid-to-point`  | 面重心转点             | 「给 x://xx.gdb//xx 图斑生成质心点」     | 取面要素的重心（可切换为标签点 label point，…  |
+| `geom-points-to-polygon`         | 点集连成面             | 「把 x://xx.gdb//xx 的点按 xx 字段分组…  | 按分组字段与排序字段把点要素依次连接成面要素…  |
+| `geom-split-line-at-point`       | 按点打断线             | 「用 x://xx.gdb//pt 把 x://xx.gdb//line…  | 用点要素把线要素在最近位置处打断成多段，输出…  |
+| `geom-split-area-by-ratio`       | 按参照面分摊面积       | 「按 xx 参照图层把 x://xx.gdb//xx 的面…  | 以另一组面为参照，把源面的指定数值字段按相交…  |
+| `geom-spider-graph`              | 生成辐射连线图         | 「从 x://xx.gdb//ref 中心点向 x://xx.gd…  | 由一组源点连到最近的参照点生成直线（蜘蛛图/期…  |
+| `geom-thiessen-polygons`         | 生成泰森多边形         | 「给 x://xx.gdb//xx 站点生成泰森多边形」  | 为点要素生成泰森多边形（最近邻分配面），输出…  |
+| `meta-export-xml`                | 导出数据集元数据 XML   | 「把 x://xx.gdb 的元数据批量导出成 XML …  | 把工作空间内数据集的元数据批量导出成 XML 文件…  |
+| `tool-workspace-crossref`        | 生成工作空间要素交叉…  | 「扫描 x://xx.gdb 生成要素交叉引用清单」  | 扫描工作空间，建立数据集与要素之间的交叉引用…  |
+| `tool-merge-by-crossref`         | 按交叉引用合并要素     | 「按交叉引用表把 x://xx.gdb 里同类的图…  | 依据交叉引用表把一批要素按相同的引用关系合并…  |
+| `geom-find-centroids`            | 查找并生成质心点       | 「按 xx 字段给 x://xx.gdb//xx 求质心点」  | 按分组条件为面要素求质心并生成点要素，可控制…  |
+| `tool-map-match`                 | 轨迹点地图匹配         | 「把 x://xx.gdb//gps 轨迹点匹配到 x://x…  | 把 GPS 轨迹点匹配吸附到道路网络线上，输出匹配…  |
+| `tool-parallel-calc-locations`   | 并行批量计算网络位置   | 「并行给 x://xx.gdb//stops 批量计算网络…  | 并行地为大量停靠点计算网络分析位置（网络位置…  |
+| `st-cluster-stps`                | 时空路径聚类           | 「把 x://xx.gdb//xx 带时间戳的点做成时…  | 把带时间戳的点构建成时空路径（STPs）并做聚类…  |
+| `hydro-dem-from-field`           | 由外业测点生成 DEM     | 「用 x://xx.gdb//pts 外业测点插值生成 D…  | 把外业实测的高程点（CSV/点要素）插值成 DEM 栅…  |
+| `raster-define-projection`       | 批量定义栅格坐标系     | 「给 x://xx 文件夹里的影像批量定义 CGCS…  | 给一个文件夹内的全部栅格统一定义（或校正）坐…  |
+| `raster-define-nodata`           | 批量设置栅格 NoData 值  | 「把 x://xx 文件夹里 8 位影像的 NoData …  | 给文件夹内的一批栅格统一把指定像元值（如 255…  |
+| `meta-copy-exact`                | 元数据精确复制（批量）  | 「把 x://xx.gdb//xx 的元数据原样复制到 …  | 把一个数据集的元数据原样（精确副本，不改写同…  |
+| `terrain-profile`                | DEM 剖面提取           | 「沿 x://xx.gdb//line 在 x://dem 上提取…  | 沿指定线在 DEM 上采样高程并输出剖面表与剖面图…  |
+| `hydro-xs-classify-points`       | 横断面点地貌分类       | 「把 x://xx.gdb//xs 横断面测点分成河槽…  | 按断面点落在主槽多边形还是洪泛区多边形（可设…  |
+| `tool-multi-ring-buffers`        | 多环缓冲（含负缓冲）   | 「给 x://xx.gdb//xx 生成 10、20、30 米…  | 按一组逗号分隔的距离（支持负值=向内）生成多环…  |
 
 > **工具技能可直接命令行执行**（不依赖 Pro 界面，适合批处理 / 自动化）：
 >

@@ -57,3 +57,9 @@ python scripts\run.py <间隔·度> <间隔·分> <间隔·秒> <输出要素类
 
 ## 来源
 来自公开开源工具改造，去除原有名称与作者可见信息后重打包；原始出处与许可证见仓库根目录 `ATTRIBUTION.md`。
+
+### 已知边界
+
+- 经 YghsBridge（后台线程）执行时拿不到当前地图，必须传「参考数据集」；
+  不传而直接跑会抛 `CURRENT disabled: run in bridge mode`。
+- 上游原实现用的是 ArcMap 的 `arcpy.mapping`，Pro 里已改为 `arcpy.mp` + 参考数据集两条路。

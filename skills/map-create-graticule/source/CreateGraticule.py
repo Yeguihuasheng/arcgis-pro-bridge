@@ -33,7 +33,7 @@ try:
     out_feature_class = arcpy.GetParameterAsText(3)  # Output feature class
 
     # Variables prepared for GP
-    mxd = arcpy.mapping.MapDocument("CURRENT")
+    mxd = (_ for _ in ()).throw(RuntimeError('CURRENT disabled: run in bridge mode'))
     data_frame = mxd.activeDataFrame
     sr = data_frame.spatialReference
     arcpy.env.outputCoordinateSystem = sr

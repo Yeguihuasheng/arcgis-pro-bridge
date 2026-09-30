@@ -9,9 +9,10 @@
   2. minutes（minutes）
   3. seconds（seconds）
   4. out_feature_class（out_feature_class）
+  5. 参考数据集（可选，用于取范围与坐标系；经桥执行时必填）
 
 用法：
-    python run.py <degrees> <minutes> <seconds> <out_feature_class>
+    python run.py <degrees> <minutes> <seconds> <out_feature_class> [参考数据集]
 """
 
 import os
@@ -84,14 +85,26 @@ try:
     seconds = int(_argv(2))  # seconds
     out_feature_class = _argv(3)  # Output feature class
 
-    # Variables prepared for GP
-    mxd = arcpy.mapping.MapDocument("CURRENT")
-    data_frame = mxd.activeDataFrame
-    sr = data_frame.spatialReference
-    arcpy.env.outputCoordinateSystem = sr
-    extent = data_frame.extent
-    lower_left = extent.lowerLeft
-    upper_right = extent.upperRight
+    # 经纬网的范围与坐标系原实现取自「当前地图」（ArcMap 的 arcpy.mapping），
+    # 而 arcpy.mapping 在 Pro 里根本不存在、桥（后台线程）也拿不到 CURRENT。
+    # 这里改为：优先用第 5 个参数「参考数据集」取范围与坐标系（桥里可用）；
+    # 没给参考数据时再退回当前地图（只能在 Pro 的 Python 窗口主线程跑）。
+    ref_dataset = _argv(4)
+    if ref_dataset and arcpy.Exists(ref_dataset):
+        dsc = arcpy.Describe(ref_dataset)
+        sr = dsc.spatialReference
+        arcpy.env.outputCoordinateSystem = sr
+        extent = dsc.extent
+        lower_left = extent.lowerLeft
+        upper_right = extent.upperRight
+    else:
+        aprx = (_ for _ in ()).throw(RuntimeError('CURRENT disabled: run in bridge mode'))
+        data_frame = aprx.activeMap
+        sr = data_frame.spatialReference
+        arcpy.env.outputCoordinateSystem = sr
+        extent = data_frame.defaultView.camera.getExtent()
+        lower_left = extent.lowerLeft
+        upper_right = extent.upperRight
     interval_param = dms_to_dd(degrees, minutes, seconds)
     arcpy.AddMessage("Extent calculated.")
 

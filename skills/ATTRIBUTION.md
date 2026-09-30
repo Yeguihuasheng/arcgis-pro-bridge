@@ -84,6 +84,37 @@
 | `map-create-graticule` | ArcGIS Pro | ArcGIS-Create-Graticule-Tool | CreateGraticule.py | (脚本工具) | MIT |
 | `tool-sun-position` | ArcGIS Pro | solutions-geoprocessing-toolbox | sun_position_analysis/scripts/spa.py | (脚本工具) | Apache-2.0 |
 
+<!-- 第 5 批（29 项）-->
+| `geom-convex-hull` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/CreateConvexhull.py | (脚本工具) | Apache License |
+| `geom-inside-buffer` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/CreateInsideBuffer.py | (脚本工具) | Apache License |
+| `geom-delete-overlap` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/DelOverlapPoly.py | (脚本工具) | Apache License |
+| `geom-fill-holes` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/PolyFillingUp.py | (脚本工具) | Apache License |
+| `geom-line-junction-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/LineJunctionPtToPt.py | (脚本工具) | Apache License |
+| `geom-line-midpoint-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/LineMidPtToPt.py | (脚本工具) | Apache License |
+| `geom-line-endpoints-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/LineStartingAndEndingPtToPt.py | (脚本工具) | Apache License |
+| `geom-line-vertices-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/LineVertexToPt.py | (脚本工具) | Apache License |
+| `geom-polygon-vertices-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/PolyVertexToPt.py | (脚本工具) | Apache License |
+| `geom-polygon-centroid-to-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/PolyCenterToPt.py | (脚本工具) | Apache License |
+| `geom-points-to-polygon` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/PtToPoly.py | (脚本工具) | Apache License |
+| `geom-split-line-at-point` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/SplitLineAtPt.py | (脚本工具) | Apache License |
+| `geom-split-area-by-ratio` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/ProportionalDivisionArea.py | (脚本工具) | Apache License |
+| `geom-spider-graph` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/SpiderGraph.py | (脚本工具) | Apache License |
+| `geom-thiessen-polygons` | ArcGIS Pro | ejpyconv-py | EJPyConv/script/Thiessen.py | (脚本工具) | Apache License |
+| `meta-export-xml` | ArcGIS Pro | Data-Wrangling-Toolbox-For-ArcGIS | Data Wrangling.pyt | getMetadata | MIT License |
+| `tool-workspace-crossref` | ArcGIS Pro | Data-Wrangling-Toolbox-For-ArcGIS | Data Wrangling.pyt | createWorkspaceFeatCrossRef | MIT License |
+| `tool-merge-by-crossref` | ArcGIS Pro | Data-Wrangling-Toolbox-For-ArcGIS | Data Wrangling.pyt | mergeFeatOnCrossRef | MIT License |
+| `geom-find-centroids` | ArcGIS Pro | find-centroids-toolbox | FindCentroids.pyt | FindCentroidsTool | MIT License |
+| `tool-map-match` | ArcGIS Pro | mapmatching | mapMatch.pyt | mapMatch | MIT License |
+| `tool-parallel-calc-locations` | ArcGIS Pro | large-network-analysis-tools | LargeNetworkAnalysisTools.pyt | ParallelCalculateLocations | Apache License - 2.0 |
+| `st-cluster-stps` | ArcGIS Pro | Bova_Tools | Bova_Tools.pyt | STPs_to_Clusters | 未随仓库附带许可证文件 |
+| `hydro-dem-from-field` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_01c_DEMFromField.py | (脚本工具) | CC0 1.0 Universal |
+| `raster-define-projection` | ArcGIS Pro | arcpy-toolbox | Define_Projection_of_RASTER_in_folder.py | (脚本工具) | Apache-2.0 |
+| `raster-define-nodata` | ArcGIS Pro | arcpy-toolbox | Define_NoData_255_onRasterFolder_8bit.py | (脚本工具) | Apache-2.0 |
+| `meta-copy-exact` | ArcGIS Pro | ArcGIS-Metadata-Scripts | scripts/arcgisgp_metadata_exactcopy_multiple.py | (脚本工具) | 未随仓库附带许可证文件 |
+| `terrain-profile` | ArcGIS Pro | ArcGIS_DEM_ToolBox | perfil.py | (脚本工具) | Creative Commons Legal Code |
+| `hydro-xs-classify-points` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_14a_XSPoints_Classify.py | (脚本工具) | CC0 1.0 Universal |
+| `tool-multi-ring-buffers` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/multi-ring-buffers.py | (脚本工具) | MIT（Copyright (c) 2017 Environment Yukon） |
+
 ## 原创与自研说明
 
 下列技能不属于上述开源采集，为本项目自研或既有资产：
