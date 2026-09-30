@@ -115,6 +115,35 @@
 | `hydro-xs-classify-points` | ArcGIS Pro | FluvialGeomorph-toolbox | tools/_14a_XSPoints_Classify.py | (脚本工具) | CC0 1.0 Universal |
 | `tool-multi-ring-buffers` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/multi-ring-buffers.py | (脚本工具) | MIT（Copyright (c) 2017 Environment Yukon） |
 
+| `field-add-area` | ArcGIS Pro | l100toolsForArcGIS | tools/AddAreaField.py | AddAreaField | MIT License |
+| `field-add-length` | ArcGIS Pro | l100toolsForArcGIS | tools/AddLengthField.py | AddLengthField | MIT License |
+| `field-add-xy` | ArcGIS Pro | l100toolsForArcGIS | tools/AddXYField.py | AddXYField | MIT License |
+| `field-add-extent` | ArcGIS Pro | l100toolsForArcGIS | tools/AddExtentField.py | AddExtentField | MIT License |
+| `field-add-vertex-count` | ArcGIS Pro | l100toolsForArcGIS | tools/AddPointCountField.py | AddPointCountField | MIT License |
+| `field-add-geometry-hash` | ArcGIS Pro | l100toolsForArcGIS | tools/AddGeometryHashField.py | AddGeometryHashField | MIT License |
+| `field-set-alias-from-table` | ArcGIS Pro | l100toolsForArcGIS | tools/SetFieldAliasFromTable.py | SetFieldAliasFromTable | MIT License |
+| `field-info-to-csv` | ArcGIS Pro | l100toolsForArcGIS | tools/FieldInfoToCSV.py | FieldInfoToCSV | MIT License |
+| `xy-shift-features` | ArcGIS Pro | l100toolsForArcGIS | tools/ShiftFeature.py | ShiftFeature | MIT License |
+| `geom-minimum-bounding` | ArcGIS Pro | l100toolsForArcGIS | tools/MinimumBoundingGeometry.py | MinimumBoundingGeometry | MIT License |
+| `geom-points-to-polyline` | ArcGIS Pro | l100toolsForArcGIS | tools/PointToPolyline.py | PointToPolyline | MIT License |
+| `sample-random-points` | ArcGIS Pro | l100toolsForArcGIS | tools/RandomPoints.py | RandomPoints | MIT License |
+| `raster-cell-value-to-point` | ArcGIS Pro | l100toolsForArcGIS | tools/RasterCellValueToPoint.py | RasterCellValueToPoint | MIT License |
+| `attach-extract` | ArcGIS Pro | l100toolsForArcGIS | tools/ExtractFeatureAttachments.py | ExtractFeatureAttachments | MIT License |
+| `table-feature-to-wkt` | ArcGIS Pro | l100toolsForArcGIS | tools/FeatureToWKTCSV.py | FeatureToWKTCSV | MIT License |
+| `table-to-json` | ArcGIS Pro | l100toolsForArcGIS | tools/TableLayerToJSON.py | TableLayerToJSON | MIT License |
+| `geom-table-to-circle` | ArcGIS Pro | l100toolsForArcGIS | tools/TableToCircle.py | TableToCircle | MIT License |
+| `geom-table-to-rectangle` | ArcGIS Pro | l100toolsForArcGIS | tools/TableToRectangle.py | TableToRectangle | MIT License |
+| `geom-spatial-angle-join` | ArcGIS Pro | SpatialAngleJoin | saj.py | Join | MIT License |
+| `stats-minmax-scale` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/MinMaxScaleFields.py | (脚本工具) | Apache License - 2.0 |
+| `stats-z-standardize` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/ZStandardizeFields.py | (脚本工具) | Apache License - 2.0 |
+| `stats-percentile-score` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/PercentileScoreFields.py | (脚本工具) | Apache License - 2.0 |
+| `stats-weighted-index` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/ComputeWeightedIndex.py | (脚本工具) | Apache License - 2.0 |
+| `stats-numerical-spatial-join` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/NumericalSpatialJoin.py | (脚本工具) | Apache License - 2.0 |
+| `stats-density-to-vector` | ArcGIS Pro | arc-sampling-and-scoring | Scripts/DensityToVector.py | (脚本工具) | Apache License - 2.0 |
+| `z-point-2d-to-3d` | ArcGIS Pro | arcgis-samples-py | Pro/data_source/2dto3d_point/Script/2dto3d_point.py | (脚本工具) | Apache License |
+| `raster-land-surface-temp` | ArcGIS Pro | land-surface-temp-arcgispro | lst_main.py | (脚本工具) | Creative Commons Legal Code |
+| `hydro-flood-inundation` | ArcGIS Pro | Flood-Inundation-ArcPyModel | ScriptMain.py | (脚本工具) | MIT License |
+
 ## 原创与自研说明
 
 下列技能不属于上述开源采集，为本项目自研或既有资产：
