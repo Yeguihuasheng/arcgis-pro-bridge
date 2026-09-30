@@ -143,6 +143,14 @@
 | `z-point-2d-to-3d` | ArcGIS Pro | arcgis-samples-py | Pro/data_source/2dto3d_point/Script/2dto3d_point.py | (脚本工具) | Apache License |
 | `raster-land-surface-temp` | ArcGIS Pro | land-surface-temp-arcgispro | lst_main.py | (脚本工具) | Creative Commons Legal Code |
 | `hydro-flood-inundation` | ArcGIS Pro | Flood-Inundation-ArcPyModel | ScriptMain.py | (脚本工具) | MIT License |
+| `coord-transform` | ArcGIS Pro | ArcGISpro-baidu-amap-geocode-pyt | core/coord_transform.py | (脚本工具) | MIT License |
+| `raster-1bit-to-8bit-png` | ArcGIS Pro | arcpy-toolbox | Convert_1bit_Tiffs_to8bit_Png.py | (脚本工具) | Apache License - 2.0 |
+| `raster-batch-project-folder` | ArcGIS Pro | arcpy-toolbox | Project_Raster_Folder_from_ETRS89_to_WebMercator.py | (脚本工具) | Apache License - 2.0 |
+| `zip-shapefiles` | ArcGIS Pro | zip-shapefiles | zipper.py | ShapefileZipper | MIT License |
+| `z-interp-missing` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/interp_missing_z.py | (脚本工具) | MIT License |
+| `gdb-domains-in-use` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/get-domains-in-use.py | (脚本工具) | MIT License |
+| `gdb-export-domains` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/export_gdb_domains.py | (脚本工具) | MIT License |
+| `tool-layer-from-selected` | ArcGIS Pro | arcplus | ArcToolbox/Scripts/layer_from_selected.py | (脚本工具) | MIT License |
 
 ## 原创与自研说明
 
